@@ -1,0 +1,252 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-global-api-service-module-at-frontend-src-services-api-ts-that-configures-axios-with-base-url-http-127-0-0-1-8000-export-typed-async-functions-for-postanalyze-idea-string-postsimulate-analyzedata-postimage-idea-string-postreport-analyzedata-postlinkedin-analyzedata-postautopost-linkedinpost-string-and-getmcpmetrics-all-functions-must-handle-errors-gracefully-and-return-typed-response-data",
+      "featureTitle": "Create a global API service module at frontend/src/services/api.ts that configures Axios with base URL http://127.0.0.1:8000. Export typed async functions for: postAnalyze(idea: string), postSimulate(analyzeData), postImage(idea: string), postReport(analyzeData), postLinkedIn(analyzeData), postAutopost(linkedinPost: string), and getMcpMetrics(). All functions must handle errors gracefully and return typed response data.",
+      "files": [
+        "frontend/src/services/api.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-global-state-management-solution-react-context-or-zustand-store-in-frontend-src-hooks-usecofoundrstore-ts-that-persists-ideatext-analyzeresult-simulateresult-brochureimageurl-reportblob-linkedinpost-mcpmetrics-and-per-step-loading-error-states-all-workflow-pages-must-read-from-and-write-to-this-shared-state-so-results-from-analyze-are-reused-in-subsequent-steps-without-re-fetching",
+      "featureTitle": "Create a global state management solution (React Context or Zustand store) in frontend/src/hooks/useCoFoundrStore.ts that persists: ideaText, analyzeResult, simulateResult, brochureImageUrl, reportBlob, linkedinPost, mcpMetrics, and per-step loading/error states. All workflow pages must read from and write to this shared state so results from /analyze are reused in subsequent steps without re-fetching.",
+      "files": [
+        "frontend/src/hooks/useCoFoundrStore.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-landing-page-at-frontend-src-pages-landingpage-tsx-featuring-a-full-viewport-3d-hero-section-with-a-three-js-react-three-fiber-animated-particle-or-geometric-background-the-cofoundrai-logo-brand-name-rendered-in-large-gradient-typography-a-concise-ai-startup-value-proposition-tagline-and-a-prominent-analyze-your-idea-cta-button-that-navigates-to-the-dashboard-page",
+      "featureTitle": "Build a Landing Page at frontend/src/pages/LandingPage.tsx featuring: a full-viewport 3D hero section with a Three.js / React Three Fiber animated particle or geometric background, the CoFoundrAI logo/brand name rendered in large gradient typography, a concise AI startup value-proposition tagline, and a prominent 'Analyze Your Idea' CTA button that navigates to the Dashboard page.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/LandingPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-persistent-sidebar-navigation-component-at-frontend-src-components-sidebar-tsx-with-links-to-dashboard-simulation-brochure-report-linkedin-auto-post-and-metrics-show-the-active-route-highlighted-include-the-cofoundrai-logo-at-the-top-the-sidebar-collapses-to-an-icon-only-rail-on-smaller-screens-apply-glassmorphism-styling-frosted-glass-background-subtle-border-backdrop-blur",
+      "featureTitle": "Build a persistent sidebar navigation component at frontend/src/components/Sidebar.tsx with links to: Dashboard, Simulation, Brochure, Report, LinkedIn, Auto-Post, and Metrics. Show the active route highlighted. Include the CoFoundrAI logo at the top. The sidebar collapses to an icon-only rail on smaller screens. Apply glassmorphism styling (frosted glass background, subtle border, backdrop blur).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Sidebar.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-workflow-progress-tracker-component-at-frontend-src-components-workflowtracker-tsx-that-displays-all-7-steps-analyze-simulate-brochure-report-linkedin-auto-post-metrics-as-a-horizontal-stepper-or-vertical-timeline-each-step-shows-idle-in-progress-animated-spinner-completed-checkmark-or-error-red-indicator-states-sourced-from-global-state-animate-step-transitions-with-smooth-transitions",
+      "featureTitle": "Build a Workflow Progress Tracker component at frontend/src/components/WorkflowTracker.tsx that displays all 7 steps (Analyze, Simulate, Brochure, Report, LinkedIn, Auto-Post, Metrics) as a horizontal stepper or vertical timeline. Each step shows: idle, in-progress (animated spinner), completed (checkmark), or error (red indicator) states sourced from global state. Animate step transitions with smooth transitions.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/WorkflowTracker.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-the-dashboard-page-at-frontend-src-pages-dashboard-tsx-containing-a-multiline-textarea-for-startup-idea-input-bound-to-global-ideatext-an-analyze-button-that-calls-post-analyze-and-stores-the-result-in-global-state-a-full-page-loading-overlay-with-animated-ai-themed-spinner-during-the-call-and-an-agent-results-panel-that-displays-the-response-fields-business-analysis-market-analysis-tech-feasibility-risk-analysis-and-validation-score-each-in-its-own-glassmorphism-card-with-animated-entrance",
+      "featureTitle": "Build the Dashboard page at frontend/src/pages/Dashboard.tsx containing: a multiline textarea for startup idea input bound to global ideaText, an 'Analyze' button that calls POST /analyze and stores the result in global state, a full-page loading overlay with animated AI-themed spinner during the call, and an Agent Results Panel that displays the response fields: Business Analysis, Market Analysis, Tech Feasibility, Risk Analysis, and Validation Score — each in its own glassmorphism card with animated entrance.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/Dashboard.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-simulation-page-at-frontend-src-pages-simulationpage-tsx-on-page-load-if-analyzeresult-exists-call-post-simulate-with-the-analyzeresult-payload-display-the-response-using-recharts-or-chart-js-charts-a-line-chart-for-market-growth-over-time-a-gauge-or-bar-chart-for-success-probability-and-summary-metric-cards-show-a-loading-state-during-the-call",
+      "featureTitle": "Build a Simulation page at frontend/src/pages/SimulationPage.tsx. On page load (if analyzeResult exists), call POST /simulate with the analyzeResult payload. Display the response using Recharts or Chart.js charts: a line chart for market growth over time, a gauge or bar chart for success probability, and summary metric cards. Show a loading state during the call.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/SimulationPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-brochure-page-at-frontend-src-pages-brochurepage-tsx-provide-a-generate-brochure-button-that-calls-post-image-with-idea-ideatext-display-the-returned-image-url-or-base64-image-dynamically-in-a-styled-preview-card-with-a-download-link-show-a-loading-animation-during-generation",
+      "featureTitle": "Build a Brochure page at frontend/src/pages/BrochurePage.tsx. Provide a 'Generate Brochure' button that calls POST /image with { idea: ideaText }. Display the returned image URL or base64 image dynamically in a styled preview card with a download link. Show a loading animation during generation.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/BrochurePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-report-page-at-frontend-src-pages-reportpage-tsx-provide-a-generate-report-button-that-calls-post-report-with-the-analyzeresult-on-success-show-a-download-pdf-button-that-triggers-browser-file-download-of-the-returned-binary-and-a-preview-button-that-opens-a-modal-displaying-the-pdf-inline-using-an-iframe-or-pdf-viewer-show-loading-and-error-states",
+      "featureTitle": "Build a Report page at frontend/src/pages/ReportPage.tsx. Provide a 'Generate Report' button that calls POST /report with the analyzeResult. On success: show a Download PDF button that triggers browser file download of the returned binary, and a 'Preview' button that opens a modal displaying the PDF inline using an iframe or PDF viewer. Show loading and error states.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/ReportPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-linkedin-page-at-frontend-src-pages-linkedinpage-tsx-provide-a-generate-post-button-that-calls-post-linkedin-with-the-analyzeresult-and-populates-an-editable-textarea-with-the-returned-post-text-stored-in-global-state-below-it-provide-a-auto-post-to-linkedin-button-that-calls-post-autopost-with-the-current-textarea-content-and-shows-a-success-toast-notification-on-completion",
+      "featureTitle": "Build a LinkedIn page at frontend/src/pages/LinkedInPage.tsx. Provide a 'Generate Post' button that calls POST /linkedin with the analyzeResult and populates an editable textarea with the returned post text stored in global state. Below it, provide a 'Auto-Post to LinkedIn' button that calls POST /autopost with the current textarea content and shows a success toast notification on completion.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/LinkedInPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-metrics-page-at-frontend-src-pages-metricspage-tsx-on-mount-call-get-mcp-metrics-and-display-the-response-in-a-dashboard-grid-showing-agent-executions-count-system-performance-indicators-and-request-counts-each-in-a-styled-stat-card-include-a-manual-refresh-button-auto-refresh-every-30-seconds",
+      "featureTitle": "Build a Metrics page at frontend/src/pages/MetricsPage.tsx. On mount, call GET /mcp/metrics and display the response in a dashboard grid showing: Agent Executions count, System Performance indicators, and Request Counts — each in a styled stat card. Include a manual Refresh button. Auto-refresh every 30 seconds.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/MetricsPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-global-toast-notification-system-at-frontend-src-components-toastprovider-tsx-expose-a-usetoast-hook-for-triggering-success-green-error-red-and-info-blue-toasts-from-anywhere-in-the-app-toasts-must-auto-dismiss-after-4-seconds-and-support-manual-dismissal-position-them-at-the-top-right-corner",
+      "featureTitle": "Build a global Toast notification system at frontend/src/components/ToastProvider.tsx. Expose a useToast hook for triggering success (green), error (red), and info (blue) toasts from anywhere in the app. Toasts must auto-dismiss after 4 seconds and support manual dismissal. Position them at the top-right corner.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ToastProvider.tsx",
+        "frontend/src/hooks/useToast.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-cohesive-premium-dark-saas-visual-theme-across-all-pages-and-components-deep-dark-background-0a0a0f-base-frosted-glass-cards-backdrop-blur-rgba-fill-1px-border-with-subtle-glow-gradient-accent-colors-cyan-to-violet-futuristic-sans-serif-typography-soft-neumorphic-shadows-on-interactive-elements-and-animated-gradient-lighting-blobs-in-the-background-floating-ai-agent-cards-should-have-3d-depth-on-hover-css-transform-translatez-perspective-use-smooth-framer-motion-transitions-for-all-page-entrances-card-appearances-and-loading-states",
+      "featureTitle": "Apply a cohesive premium dark SaaS visual theme across all pages and components: deep dark background (#0a0a0f base), frosted-glass cards (backdrop-blur + rgba fill + 1px border with subtle glow), gradient accent colors (cyan-to-violet), futuristic sans-serif typography, soft neumorphic shadows on interactive elements, and animated gradient lighting blobs in the background. Floating AI agent cards should have 3D depth on hover (CSS transform translateZ / perspective). Use smooth Framer Motion transitions for all page entrances, card appearances, and loading states.",
+      "files": [
+        "frontend/src/components/GlassCard.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

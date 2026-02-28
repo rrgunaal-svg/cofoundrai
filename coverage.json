@@ -1,0 +1,299 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-28T12:34:37.999Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 13,
+    "implemented": 13,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Create a global API service module at frontend/src/services/api.ts that configures Axios with base URL http://127.0.0.1:8000. Export typed async functions for: postAnalyze(idea: string), postSimulate(analyzeData), postImage(idea: string), postReport(analyzeData), postLinkedIn(analyzeData), postAutopost(linkedinPost: string), and getMcpMetrics(). All functions must handle errors gracefully and return typed response data.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/services/api.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/services/api.ts"
+        ]
+      },
+      {
+        "id": "REQ-10",
+        "summary": "Build a LinkedIn page at frontend/src/pages/LinkedInPage.tsx. Provide a 'Generate Post' button that calls POST /linkedin with the analyzeResult and populates an editable textarea with the returned post text stored in global state. Below it, provide a 'Auto-Post to LinkedIn' button that calls POST /autopost with the current textarea content and shows a success toast notification on completion.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/LinkedInPage.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/LinkedInPage.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-11",
+        "summary": "Build a Metrics page at frontend/src/pages/MetricsPage.tsx. On mount, call GET /mcp/metrics and display the response in a dashboard grid showing: Agent Executions count, System Performance indicators, and Request Counts — each in a styled stat card. Include a manual Refresh button. Auto-refresh every 30 seconds.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/MetricsPage.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/MetricsPage.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-12",
+        "summary": "Build a global Toast notification system at frontend/src/components/ToastProvider.tsx. Expose a useToast hook for triggering success (green), error (red), and info (blue) toasts from anywhere in the app. Toasts must auto-dismiss after 4 seconds and support manual dismissal. Position them at the top-right corner.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ToastProvider.tsx",
+          "frontend/src/hooks/useToast.ts",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ToastProvider.tsx",
+          "frontend/src/hooks/useToast.ts",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-13",
+        "summary": "Apply a cohesive premium dark SaaS visual theme across all pages and components: deep dark background (#0a0a0f base), frosted-glass cards (backdrop-blur + rgba fill + 1px border with subtle glow), gradient accent colors (cyan-to-violet), futuristic sans-serif typography, soft neumorphic shadows on interactive elements, and animated gradient lighting blobs in the background. Floating AI agent cards should have 3D depth on hover (CSS transform translateZ / perspective). Use smooth Framer Motion transitions for all page entrances, card appearances, and loading states.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/GlassCard.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/GlassCard.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Create a global state management solution (React Context or Zustand store) in frontend/src/hooks/useCoFoundrStore.ts that persists: ideaText, analyzeResult, simulateResult, brochureImageUrl, reportBlob, linkedinPost, mcpMetrics, and per-step loading/error states. All workflow pages must read from and write to this shared state so results from /analyze are reused in subsequent steps without re-fetching.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useCoFoundrStore.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useCoFoundrStore.ts"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Build a Landing Page at frontend/src/pages/LandingPage.tsx featuring: a full-viewport 3D hero section with a Three.js / React Three Fiber animated particle or geometric background, the CoFoundrAI logo/brand name rendered in large gradient typography, a concise AI startup value-proposition tagline, and a prominent 'Analyze Your Idea' CTA button that navigates to the Dashboard page.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/LandingPage.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/LandingPage.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Build a persistent sidebar navigation component at frontend/src/components/Sidebar.tsx with links to: Dashboard, Simulation, Brochure, Report, LinkedIn, Auto-Post, and Metrics. Show the active route highlighted. Include the CoFoundrAI logo at the top. The sidebar collapses to an icon-only rail on smaller screens. Apply glassmorphism styling (frosted glass background, subtle border, backdrop blur).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Sidebar.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Sidebar.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Build a Workflow Progress Tracker component at frontend/src/components/WorkflowTracker.tsx that displays all 7 steps (Analyze, Simulate, Brochure, Report, LinkedIn, Auto-Post, Metrics) as a horizontal stepper or vertical timeline. Each step shows: idle, in-progress (animated spinner), completed (checkmark), or error (red indicator) states sourced from global state. Animate step transitions with smooth transitions.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/WorkflowTracker.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/WorkflowTracker.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Build the Dashboard page at frontend/src/pages/Dashboard.tsx containing: a multiline textarea for startup idea input bound to global ideaText, an 'Analyze' button that calls POST /analyze and stores the result in global state, a full-page loading overlay with animated AI-themed spinner during the call, and an Agent Results Panel that displays the response fields: Business Analysis, Market Analysis, Tech Feasibility, Risk Analysis, and Validation Score — each in its own glassmorphism card with animated entrance.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Dashboard.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Dashboard.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Build a Simulation page at frontend/src/pages/SimulationPage.tsx. On page load (if analyzeResult exists), call POST /simulate with the analyzeResult payload. Display the response using Recharts or Chart.js charts: a line chart for market growth over time, a gauge or bar chart for success probability, and summary metric cards. Show a loading state during the call.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/SimulationPage.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/SimulationPage.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Build a Brochure page at frontend/src/pages/BrochurePage.tsx. Provide a 'Generate Brochure' button that calls POST /image with { idea: ideaText }. Display the returned image URL or base64 image dynamically in a styled preview card with a download link. Show a loading animation during generation.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/BrochurePage.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/BrochurePage.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Build a Report page at frontend/src/pages/ReportPage.tsx. Provide a 'Generate Report' button that calls POST /report with the analyzeResult. On success: show a Download PDF button that triggers browser file download of the returned binary, and a 'Preview' button that opens a modal displaying the PDF inline using an iframe or PDF viewer. Show loading and error states.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/ReportPage.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/ReportPage.tsx",
+          "frontend/src/App.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "build-request.json",
+    "build-template/Dockerfile",
+    "build-template/LICENSE",
+    "build-template/README.md",
+    "build-template/deploy.sh",
+    "build-template/icp.yaml",
+    "build-template/package.json",
+    "build-template/pnpm-lock.yaml",
+    "build-template/pnpm-workspace.yaml",
+    "build-template/scripts/prune-unused-images.js",
+    "build-template/scripts/resize-images.js",
+    "build-template/src/backend/canister.yaml",
+    "build-template/src/backend/system-idl/aaaaa-aa.did",
+    "build-template/src/frontend/canister.yaml",
+    "build-template/src/frontend/components.json",
+    "build-template/src/frontend/env.json",
+    "build-template/src/frontend/eslint-rules/no-bigint-in-query-keys.js",
+    "build-template/src/frontend/eslint-rules/require-internet-identity-provider.js",
+    "build-template/src/frontend/eslint.config.js",
+    "build-template/src/frontend/package.json",
+    "build-template/src/frontend/postcss.config.js",
+    "build-template/src/frontend/src/components/ui/accordion.tsx",
+    "build-template/src/frontend/src/components/ui/alert-dialog.tsx",
+    "build-template/src/frontend/src/components/ui/alert.tsx",
+    "build-template/src/frontend/src/components/ui/aspect-ratio.tsx",
+    "build-template/src/frontend/src/components/ui/avatar.tsx",
+    "build-template/src/frontend/src/components/ui/badge.tsx",
+    "build-template/src/frontend/src/components/ui/breadcrumb.tsx",
+    "build-template/src/frontend/src/components/ui/button.tsx",
+    "build-template/src/frontend/src/components/ui/calendar.tsx",
+    "build-template/src/frontend/src/components/ui/card.tsx",
+    "build-template/src/frontend/src/components/ui/carousel.tsx",
+    "build-template/src/frontend/src/components/ui/chart.tsx",
+    "build-template/src/frontend/src/components/ui/checkbox.tsx",
+    "build-template/src/frontend/src/components/ui/collapsible.tsx",
+    "build-template/src/frontend/src/components/ui/command.tsx",
+    "build-template/src/frontend/src/components/ui/context-menu.tsx",
+    "build-template/src/frontend/src/components/ui/dialog.tsx",
+    "build-template/src/frontend/src/components/ui/drawer.tsx",
+    "build-template/src/frontend/src/components/ui/dropdown-menu.tsx",
+    "build-template/src/frontend/src/components/ui/form.tsx",
+    "build-template/src/frontend/src/components/ui/hover-card.tsx",
+    "build-template/src/frontend/src/components/ui/input-otp.tsx",
+    "build-template/src/frontend/src/components/ui/input.tsx",
+    "build-template/src/frontend/src/components/ui/label.tsx",
+    "build-template/src/frontend/src/components/ui/menubar.tsx",
+    "build-template/src/frontend/src/components/ui/navigation-menu.tsx",
+    "build-template/src/frontend/src/components/ui/pagination.tsx",
+    "build-template/src/frontend/src/components/ui/popover.tsx",
+    "build-template/src/frontend/src/components/ui/progress.tsx",
+    "build-template/src/frontend/src/components/ui/radio-group.tsx",
+    "build-template/src/frontend/src/components/ui/resizable.tsx",
+    "build-template/src/frontend/src/components/ui/scroll-area.tsx",
+    "build-template/src/frontend/src/components/ui/select.tsx",
+    "build-template/src/frontend/src/components/ui/separator.tsx",
+    "build-template/src/frontend/src/components/ui/sheet.tsx",
+    "build-template/src/frontend/src/components/ui/sidebar.tsx",
+    "build-template/src/frontend/src/components/ui/skeleton.tsx",
+    "build-template/src/frontend/src/components/ui/slider.tsx",
+    "build-template/src/frontend/src/components/ui/sonner.tsx",
+    "build-template/src/frontend/src/components/ui/switch.tsx",
+    "build-template/src/frontend/src/components/ui/table.tsx",
+    "build-template/src/frontend/src/components/ui/tabs.tsx",
+    "build-template/src/frontend/src/components/ui/textarea.tsx",
+    "build-template/src/frontend/src/components/ui/toggle-group.tsx",
+    "build-template/src/frontend/src/components/ui/toggle.tsx",
+    "build-template/src/frontend/src/components/ui/tooltip.tsx",
+    "build-template/src/frontend/src/hooks/use-mobile.tsx",
+    "build-template/src/frontend/src/lib/utils.ts",
+    "build-template/src/frontend/tsconfig.json",
+    "build-template/src/frontend/vite.config.js",
+    "build-template/tsconfig.json",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/public/assets/generated/cofoundrai-logo.dim_256x256.png",
+    "frontend/public/assets/generated/hero-bg.dim_1920x1080.png",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/GlassCard.tsx",
+    "frontend/src/components/Sidebar.tsx",
+    "frontend/src/components/ToastProvider.tsx",
+    "frontend/src/components/WorkflowTracker.tsx",
+    "frontend/src/config.ts",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useCoFoundrStore.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useToast.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/AutoPostPage.tsx",
+    "frontend/src/pages/BrochurePage.tsx",
+    "frontend/src/pages/Dashboard.tsx",
+    "frontend/src/pages/LandingPage.tsx",
+    "frontend/src/pages/LinkedInPage.tsx",
+    "frontend/src/pages/MetricsPage.tsx",
+    "frontend/src/pages/ReportPage.tsx",
+    "frontend/src/pages/SimulationPage.tsx",
+    "frontend/src/services/api.ts",
+    "frontend/src/ui-summary.json",
+    "frontend/src/utils/StorageClient.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

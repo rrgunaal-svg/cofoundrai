@@ -1,0 +1,285 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "CoFoundrAI — AI Startup Co-Founder Platform Frontend",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create global API service module with typed Axios functions for all FastAPI endpoints",
+      "acceptanceCriteria": [
+        "Axios instance is configured with baseURL http://127.0.0.1:8000",
+        "All 7 API functions are exported and typed",
+        "Network errors surface as caught exceptions with error messages"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/services/api.ts",
+          "operation": "create",
+          "description": "Create API service module that configures Axios with base URL http://127.0.0.1:8000. Export typed async functions: postAnalyze(idea: string), postSimulate(analyzeData), postImage(idea: string), postReport(analyzeData), postLinkedIn(analyzeData), postAutopost(linkedinPost: string), and getMcpMetrics(). Each function wraps Axios calls in try-catch blocks and returns typed response data or throws typed errors."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement global state management for workflow data persistence across pages",
+      "acceptanceCriteria": [
+        "analyzeResult persists across page/tab navigation within the app",
+        "Steps 2–6 consume analyzeResult from global state without re-calling /analyze",
+        "Each step exposes an independent loading boolean and error string"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useCoFoundrStore.ts",
+          "operation": "create",
+          "description": "Create Zustand store that persists: ideaText, analyzeResult, simulateResult, brochureImageUrl, reportBlob, linkedinPost, mcpMetrics. Include per-step loading/error states (analyzeLoading, analyzeError, simulateLoading, simulateError, etc.). Export typed hooks for reading and writing each state slice."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Build landing page with 3D Three.js hero and CTA to Dashboard",
+      "acceptanceCriteria": [
+        "Three.js animated background renders without errors on the landing page",
+        "CTA button navigates to /dashboard",
+        "Page is fully responsive on mobile, tablet, and desktop"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/LandingPage.tsx",
+          "operation": "create",
+          "description": "Create landing page featuring: full-viewport Three.js / React Three Fiber animated particle or geometric background, large gradient typography displaying 'CoFoundrAI' brand, AI startup value-proposition tagline, and prominent 'Analyze Your Idea' CTA button navigating to /dashboard. Include Framer Motion entrance animations. Use generated logo image at frontend/public/assets/generated/cofoundrai-logo.dim_256x256.png and generated hero background at frontend/public/assets/generated/hero-bg.dim_1920x1080.png as static assets."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for LandingPage at root path '/' in the router configuration. Ensure React Router is configured to navigate between all workflow pages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Build persistent sidebar navigation with glassmorphism styling",
+      "acceptanceCriteria": [
+        "All 7 navigation destinations are present and functional",
+        "Active route is visually distinct",
+        "Sidebar collapses on mobile",
+        "Glassmorphism styles are applied"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Sidebar.tsx",
+          "operation": "create",
+          "description": "Create sidebar component with links to: Dashboard, Simulation, Brochure, Report, LinkedIn, Auto-Post, and Metrics. Highlight active route using React Router's useLocation hook. Display CoFoundrAI logo at top (reference frontend/public/assets/generated/cofoundrai-logo.dim_256x256.png). Apply glassmorphism styles (backdrop-blur, semi-transparent fill, subtle border glow). Collapse to icon-only rail on mobile using responsive breakpoints."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire Sidebar component into main app layout so it persists across all workflow pages. Wrap route content in a layout container that positions sidebar and main content area."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Build workflow progress tracker showing 7 steps with animated state transitions",
+      "acceptanceCriteria": [
+        "All 7 steps are visible simultaneously",
+        "Step states update reactively as API calls complete",
+        "Animated transitions between idle → loading → done/error"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/WorkflowTracker.tsx",
+          "operation": "create",
+          "description": "Create progress tracker component displaying all 7 steps (Analyze, Simulate, Brochure, Report, LinkedIn, Auto-Post, Metrics) as a horizontal stepper or vertical timeline. Each step sources state (idle/in-progress/completed/error) from global store loading/error flags. Show animated spinner for in-progress, checkmark for completed, red indicator for error. Use Framer Motion for smooth step transitions."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Integrate WorkflowTracker component into the layout so it displays persistently across all workflow pages (Dashboard, Simulation, Brochure, Report, LinkedIn, Auto-Post, Metrics)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Build Dashboard page with idea input, analyze button, loading overlay, and agent results panel",
+      "acceptanceCriteria": [
+        "POST /analyze is called with { idea: ideaText }",
+        "All 5 result fields render in separate cards",
+        "Loading overlay is visible during API call",
+        "Error toast appears if the request fails"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Dashboard.tsx",
+          "operation": "create",
+          "description": "Create Dashboard page containing: multiline textarea bound to global ideaText, 'Analyze' button calling postAnalyze from api.ts and storing result in global state. Show full-page loading overlay with animated AI-themed spinner during the call. Display Agent Results Panel with 5 glassmorphism cards for: Business Analysis, Market Analysis, Tech Feasibility, Risk Analysis, Validation Score. Use Framer Motion for card entrance animations. Show error toast on failure using useToast hook."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for Dashboard page at '/dashboard' in the router configuration."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Build Simulation page that calls /simulate and displays charts",
+      "acceptanceCriteria": [
+        "Charts render correctly with data from /simulate response",
+        "If analyzeResult is missing, show a prompt directing the user to run analysis first",
+        "Loading spinner visible while /simulate is pending"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/SimulationPage.tsx",
+          "operation": "create",
+          "description": "Create Simulation page that checks for analyzeResult in global state on mount. If missing, show prompt to run analysis first. Otherwise, call postSimulate with analyzeResult payload. Display response using Recharts or Chart.js: line chart for market growth over time, gauge/bar chart for success probability, summary metric cards. Show loading spinner during API call. Use glassmorphism card styling."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for SimulationPage at '/simulation' in the router configuration."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Build Brochure page with image generation and preview",
+      "acceptanceCriteria": [
+        "Image is rendered from the API response without page reload",
+        "Download link allows saving the image",
+        "Loading animation is shown during the API call"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/BrochurePage.tsx",
+          "operation": "create",
+          "description": "Create Brochure page with 'Generate Brochure' button calling postImage with { idea: ideaText }. Display returned image URL or base64 dynamically in a styled preview card with download link. Show loading animation during generation. Store brochureImageUrl in global state. Apply glassmorphism styling to preview card."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for BrochurePage at '/brochure' in the router configuration."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Build Report page with PDF generation, download, and preview modal",
+      "acceptanceCriteria": [
+        "Download button triggers file save of the PDF blob",
+        "Preview modal renders the PDF inline",
+        "Error toast shown if /report fails"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ReportPage.tsx",
+          "operation": "create",
+          "description": "Create Report page with 'Generate Report' button calling postReport with analyzeResult. On success, show 'Download PDF' button triggering browser file download of returned binary, and 'Preview' button opening modal displaying PDF inline using iframe or PDF viewer. Show loading and error states. Use glassmorphism for modal and buttons."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for ReportPage at '/report' in the router configuration."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Build LinkedIn page with post generation and auto-posting",
+      "acceptanceCriteria": [
+        "Generated text pre-fills editable textarea",
+        "User can edit the post before auto-posting",
+        "Success toast appears after /autopost completes",
+        "Error toast appears if either call fails"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/LinkedInPage.tsx",
+          "operation": "create",
+          "description": "Create LinkedIn page with 'Generate Post' button calling postLinkedIn with analyzeResult and populating editable textarea with returned post text stored in global state. Below, provide 'Auto-Post to LinkedIn' button calling postAutopost with current textarea content. Show success toast on completion, error toast on failure. Apply glassmorphism styling."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for LinkedInPage at '/linkedin' in the router configuration."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Build Metrics page displaying MCP metrics with auto-refresh",
+      "acceptanceCriteria": [
+        "Metrics cards display values from /mcp/metrics response",
+        "Auto-refresh fires every 30 seconds",
+        "Manual refresh button triggers immediate refetch"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/MetricsPage.tsx",
+          "operation": "create",
+          "description": "Create Metrics page calling getMcpMetrics on mount and displaying response in dashboard grid: Agent Executions count, System Performance indicators, Request Counts — each in styled stat card. Include manual Refresh button. Implement auto-refresh every 30 seconds using setInterval. Apply glassmorphism styling to stat cards."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for MetricsPage at '/metrics' in the router configuration."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Build global toast notification system with auto-dismiss and manual close",
+      "acceptanceCriteria": [
+        "Success and error toasts are visually distinct",
+        "Toasts auto-dismiss after 4 seconds",
+        "Multiple toasts stack correctly"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ToastProvider.tsx",
+          "operation": "create",
+          "description": "Create toast notification provider component exposing useToast hook for triggering success (green), error (red), and info (blue) toasts. Toasts auto-dismiss after 4 seconds, support manual dismissal, and position at top-right corner. Ensure multiple toasts stack correctly."
+        },
+        {
+          "path": "frontend/src/hooks/useToast.ts",
+          "operation": "create",
+          "description": "Export useToast hook providing methods: showSuccess(message), showError(message), showInfo(message). Hook consumes ToastProvider context to trigger toast notifications."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap the entire app with ToastProvider so toast notifications are available globally across all pages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Apply cohesive premium dark SaaS visual theme with glassmorphism, 3D effects, and Framer Motion animations",
+      "acceptanceCriteria": [
+        "All pages use the dark base background",
+        "Glassmorphism cards have backdrop-blur and semi-transparent fill",
+        "Hover states on cards show perceptible 3D depth transform",
+        "Framer Motion entrance animations fire on page/component mount",
+        "Theme is consistent across Landing, Dashboard, and all workflow pages"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Apply global dark theme base background (#0a0a0f), define CSS custom properties for gradient accent colors (cyan-to-violet), futuristic sans-serif typography stack, and animated gradient lighting blobs in background using CSS keyframes or Tailwind config."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind theme with custom colors for dark background (#0a0a0f), cyan-to-violet gradient stops, glassmorphism utilities (backdrop-blur, rgba fills, border glow), and neumorphic shadow presets. Configure animation utilities for smooth transitions and 3D depth transforms."
+        },
+        {
+          "path": "frontend/src/components/GlassCard.tsx",
+          "operation": "create",
+          "description": "Create reusable GlassCard component with glassmorphism styling (backdrop-blur, semi-transparent fill, 1px border with subtle glow) and optional 3D hover depth effect using CSS transform perspective and translateZ. Accept children and className props for flexible usage across pages."
+        }
+      ]
+    }
+  ]
+}

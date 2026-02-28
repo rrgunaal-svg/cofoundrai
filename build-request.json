@@ -1,0 +1,305 @@
+{
+  "kind": "build_request",
+  "title": "CoFoundrAI — AI Startup Co-Founder Platform Frontend",
+  "projectName": "CoFoundrAI",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a global API service module at frontend/src/services/api.ts that configures Axios with base URL http://127.0.0.1:8000. Export typed async functions for: postAnalyze(idea: string), postSimulate(analyzeData), postImage(idea: string), postReport(analyzeData), postLinkedIn(analyzeData), postAutopost(linkedinPost: string), and getMcpMetrics(). All functions must handle errors gracefully and return typed response data.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Frontend must FULLY CONNECT to an existing FastAPI backend",
+          "Backend Base URL: http://127.0.0.1:8000"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Axios instance is configured with baseURL http://127.0.0.1:8000",
+        "All 7 API functions are exported and typed",
+        "Network errors surface as caught exceptions with error messages"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Create a global state management solution (React Context or Zustand store) in frontend/src/hooks/useCoFoundrStore.ts that persists: ideaText, analyzeResult, simulateResult, brochureImageUrl, reportBlob, linkedinPost, mcpMetrics, and per-step loading/error states. All workflow pages must read from and write to this shared state so results from /analyze are reused in subsequent steps without re-fetching.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Maintain global state",
+          "Reuse analyze result across steps",
+          "Do NOT reload page"
+        ]
+      },
+      "acceptanceCriteria": [
+        "analyzeResult persists across page/tab navigation within the app",
+        "Steps 2–6 consume analyzeResult from global state without re-calling /analyze",
+        "Each step exposes an independent loading boolean and error string"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Build a Landing Page at frontend/src/pages/LandingPage.tsx featuring: a full-viewport 3D hero section with a Three.js / React Three Fiber animated particle or geometric background, the CoFoundrAI logo/brand name rendered in large gradient typography, a concise AI startup value-proposition tagline, and a prominent 'Analyze Your Idea' CTA button that navigates to the Dashboard page.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Landing Page",
+          "Hero section",
+          "AI Startup branding",
+          "'Analyze Idea' button",
+          "3D hero section"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Three.js animated background renders without errors on the landing page",
+        "CTA button navigates to /dashboard",
+        "Page is fully responsive on mobile, tablet, and desktop"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Build a persistent sidebar navigation component at frontend/src/components/Sidebar.tsx with links to: Dashboard, Simulation, Brochure, Report, LinkedIn, Auto-Post, and Metrics. Show the active route highlighted. Include the CoFoundrAI logo at the top. The sidebar collapses to an icon-only rail on smaller screens. Apply glassmorphism styling (frosted glass background, subtle border, backdrop blur).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Sidebar navigation",
+          "Modern sidebar navigation",
+          "Glassmorphism + Neumorphism effects"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All 7 navigation destinations are present and functional",
+        "Active route is visually distinct",
+        "Sidebar collapses on mobile",
+        "Glassmorphism styles are applied"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Build a Workflow Progress Tracker component at frontend/src/components/WorkflowTracker.tsx that displays all 7 steps (Analyze, Simulate, Brochure, Report, LinkedIn, Auto-Post, Metrics) as a horizontal stepper or vertical timeline. Each step shows: idle, in-progress (animated spinner), completed (checkmark), or error (red indicator) states sourced from global state. Animate step transitions with smooth transitions.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Progress steps visualization",
+          "Animated workflow steps",
+          "Workflow progress tracker"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All 7 steps are visible simultaneously",
+        "Step states update reactively as API calls complete",
+        "Animated transitions between idle → loading → done/error"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Build the Dashboard page at frontend/src/pages/Dashboard.tsx containing: a multiline textarea for startup idea input bound to global ideaText, an 'Analyze' button that calls POST /analyze and stores the result in global state, a full-page loading overlay with animated AI-themed spinner during the call, and an Agent Results Panel that displays the response fields: Business Analysis, Market Analysis, Tech Feasibility, Risk Analysis, and Validation Score — each in its own glassmorphism card with animated entrance.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Startup Idea Input Box",
+          "Analyze Button",
+          "Loading animation",
+          "Agent Results Panel",
+          "Business Analysis",
+          "Market Analysis",
+          "Tech Feasibility",
+          "Risk Analysis",
+          "Validation Score"
+        ]
+      },
+      "acceptanceCriteria": [
+        "POST /analyze is called with { idea: ideaText }",
+        "All 5 result fields render in separate cards",
+        "Loading overlay is visible during API call",
+        "Error toast appears if the request fails"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Build a Simulation page at frontend/src/pages/SimulationPage.tsx. On page load (if analyzeResult exists), call POST /simulate with the analyzeResult payload. Display the response using Recharts or Chart.js charts: a line chart for market growth over time, a gauge or bar chart for success probability, and summary metric cards. Show a loading state during the call.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "POST /simulate",
+          "Charts",
+          "Market growth",
+          "Success probability"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Charts render correctly with data from /simulate response",
+        "If analyzeResult is missing, show a prompt directing the user to run analysis first",
+        "Loading spinner visible while /simulate is pending"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Build a Brochure page at frontend/src/pages/BrochurePage.tsx. Provide a 'Generate Brochure' button that calls POST /image with { idea: ideaText }. Display the returned image URL or base64 image dynamically in a styled preview card with a download link. Show a loading animation during generation.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "POST /image",
+          "Display returned image dynamically",
+          "Generate Brochure Image"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Image is rendered from the API response without page reload",
+        "Download link allows saving the image",
+        "Loading animation is shown during the API call"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Build a Report page at frontend/src/pages/ReportPage.tsx. Provide a 'Generate Report' button that calls POST /report with the analyzeResult. On success: show a Download PDF button that triggers browser file download of the returned binary, and a 'Preview' button that opens a modal displaying the PDF inline using an iframe or PDF viewer. Show loading and error states.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "POST /report",
+          "Download Button",
+          "Preview modal"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Download button triggers file save of the PDF blob",
+        "Preview modal renders the PDF inline",
+        "Error toast shown if /report fails"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Build a LinkedIn page at frontend/src/pages/LinkedInPage.tsx. Provide a 'Generate Post' button that calls POST /linkedin with the analyzeResult and populates an editable textarea with the returned post text stored in global state. Below it, provide a 'Auto-Post to LinkedIn' button that calls POST /autopost with the current textarea content and shows a success toast notification on completion.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "POST /linkedin",
+          "Show editable post textbox",
+          "POST /autopost",
+          "Show success notification"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated text pre-fills editable textarea",
+        "User can edit the post before auto-posting",
+        "Success toast appears after /autopost completes",
+        "Error toast appears if either call fails"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Build a Metrics page at frontend/src/pages/MetricsPage.tsx. On mount, call GET /mcp/metrics and display the response in a dashboard grid showing: Agent Executions count, System Performance indicators, and Request Counts — each in a styled stat card. Include a manual Refresh button. Auto-refresh every 30 seconds.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "GET /mcp/metrics",
+          "Agent executions",
+          "System performance",
+          "Request counts"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Metrics cards display values from /mcp/metrics response",
+        "Auto-refresh fires every 30 seconds",
+        "Manual refresh button triggers immediate refetch"
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Build a global Toast notification system at frontend/src/components/ToastProvider.tsx. Expose a useToast hook for triggering success (green), error (red), and info (blue) toasts from anywhere in the app. Toasts must auto-dismiss after 4 seconds and support manual dismissal. Position them at the top-right corner.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Success/Error toast alerts"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Success and error toasts are visually distinct",
+        "Toasts auto-dismiss after 4 seconds",
+        "Multiple toasts stack correctly"
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Apply a cohesive premium dark SaaS visual theme across all pages and components: deep dark background (#0a0a0f base), frosted-glass cards (backdrop-blur + rgba fill + 1px border with subtle glow), gradient accent colors (cyan-to-violet), futuristic sans-serif typography, soft neumorphic shadows on interactive elements, and animated gradient lighting blobs in the background. Floating AI agent cards should have 3D depth on hover (CSS transform translateZ / perspective). Use smooth Framer Motion transitions for all page entrances, card appearances, and loading states.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Glassmorphism + Neumorphism effects",
+          "3D floating cards and panels",
+          "Gradient lighting backgrounds",
+          "AI futuristic theme",
+          "Interactive hover depth effects",
+          "Premium dark theme",
+          "investor-ready"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All pages use the dark base background",
+        "Glassmorphism cards have backdrop-blur and semi-transparent fill",
+        "Hover states on cards show perceptible 3D depth transform",
+        "Framer Motion entrance animations fire on page/component mount",
+        "Theme is consistent across Landing, Dashboard, and all workflow pages"
+      ]
+    }
+  ],
+  "constraints": [
+    "All API calls must target http://127.0.0.1:8000 — do not change backend endpoints or payloads",
+    "Do not reload the page at any point in the workflow — use client-side navigation only",
+    "Backend Motoko canister is not used — all data flows through the FastAPI backend at the specified base URL",
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui"
+  ],
+  "nonGoals": [
+    "Building or modifying the FastAPI backend",
+    "Internet Identity / ICP authentication integration",
+    "Real-time WebSocket updates",
+    "Mobile native app",
+    "Persisting data in the Motoko backend canister"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Futuristic AI brain / neural network logo mark on a transparent background, cyan-to-violet gradient lines, minimal and geometric (cofoundrai-logo.dim_256x256.png)",
+      "Abstract dark space-like hero background with glowing particle network and subtle cyan-violet gradient nebula (hero-bg.dim_1920x1080.png)"
+    ],
+    "edits": []
+  }
+}
